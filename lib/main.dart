@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:infi_devtest/buisness_logic/models/cart_list_model.dart';
@@ -10,18 +9,12 @@ import 'package:infi_devtest/buisness_logic/view_models/cart_view_model.dart';
 import 'package:infi_devtest/buisness_logic/view_models/database_view_model.dart';
 import 'package:infi_devtest/services/service_locator.dart';
 import 'package:provider/provider.dart';
-import 'package:path_provider/path_provider.dart' as path;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final Directory dir = await path.getApplicationDocumentsDirectory();
   await Hive.initFlutter();
   Hive.registerAdapter(CartItemAdapter());
   Hive.registerAdapter(CartItemListAdapter());
-
-  // Hive
-  //   ..init(dir.path)
-  //   ..registerAdapter(CartItemAdapter());
   await Hive.openBox<CartItemList>('cartBox');
   setserviceLocator();
   runApp(const MyApp());

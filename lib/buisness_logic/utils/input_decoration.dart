@@ -7,9 +7,7 @@ class TextInputDecoration {
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       hintText: 'Search',
       filled: true,
-      hintStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
-            color: Theme.of(context).secondaryHeaderColor.withOpacity(0.8),
-          ),
+      hintStyle: Theme.of(context).textTheme.bodyText2,
       suffixIcon: IconButton(
         icon: const Icon(
           Icons.search,
@@ -26,7 +24,7 @@ class TextInputDecoration {
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      fillColor: const Color(0xff11D0A2),
+      fillColor: const Color.fromARGB(255, 174, 207, 198),
       errorStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
             color: Theme.of(context).errorColor,
           ),

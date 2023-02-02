@@ -19,7 +19,6 @@ class HomeScreenViewModel extends BaseModel {
     if (prodList.data != null) {
       productList = (prodList.data! as List).map((e) => Products.fromJson(e)).toList();
       filterList = productList;
-      debugPrint(filterList.toString());
       setState(ViewState.idle);
     } else {
       debugPrint(prodList.exception.toString());
@@ -32,7 +31,6 @@ class HomeScreenViewModel extends BaseModel {
     } else {
       filterList = productList.where((element) => element.category == category).toList();
     }
-    // productsList.clear();
     debugPrint(filterList.toString());
     notifyListeners();
   }

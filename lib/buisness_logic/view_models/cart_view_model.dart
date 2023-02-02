@@ -44,6 +44,7 @@ class CartViewModel extends ChangeNotifier {
 
   void removeitem(String productId) {
     items.removeWhere((element) => element.id.toString() == productId);
+    localDBService.saveCartItems(items);
     notifyListeners();
   }
 }

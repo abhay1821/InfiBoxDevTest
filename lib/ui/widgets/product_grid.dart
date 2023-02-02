@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:infi_devtest/buisness_logic/models/cart_model.dart';
 import 'package:infi_devtest/buisness_logic/models/products.dart';
 import 'package:infi_devtest/buisness_logic/view_models/cart_view_model.dart';
 import 'package:infi_devtest/services/service_locator.dart';
+import 'package:infi_devtest/ui/widgets/rating_widget.dart';
 import 'package:provider/provider.dart';
 
 class ProdView extends StatelessWidget {
@@ -38,7 +38,9 @@ class ProdView extends StatelessWidget {
               title: Text(
                 '₹ ${prodData.price}',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline2!.copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.headline2!.copyWith(
+                      color: Colors.white,
+                    ),
               ),
               trailing: IconButton(
                 icon: const Icon(Icons.shopping_cart),
@@ -51,6 +53,7 @@ class ProdView extends StatelessWidget {
                     imageUrl: prodData.image!,
                   );
                   Provider.of<CartViewModel>(context, listen: false).additem(item);
+                  navigationService.showSnackBar('Item added to Cart');
                 },
               ),
             ),
@@ -90,19 +93,7 @@ class ProdView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    RatingBar.builder(
-                      initialRating: prodData.rating?.rate ?? 2,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemSize: 20,
-                      itemBuilder: (context, _) => const Icon(
-                        size: 2,
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (rating) {},
-                    ),
+                    RatingsWidget(prodData: prodData),
                     Text(
                       '(${prodData.rating!.count})',
                       style: Theme.of(context).textTheme.headline2,

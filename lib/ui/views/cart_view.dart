@@ -53,7 +53,7 @@ class CartScreen extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Total Price : ₹ $total',
+                'Cart Total : ₹ $total',
                 style: Theme.of(context).textTheme.headline3!.copyWith(
                       color: const Color.fromARGB(255, 87, 128, 99),
                     ),

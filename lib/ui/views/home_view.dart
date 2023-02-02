@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           width: sizeConfig.getPropWidth(50),
                                           child: Consumer<CartViewModel>(
                                             builder: (_, cart, ch) => Badge(
-                                              value: cart.items.length,
+                                              value: cart.getitems.length,
                                               child: ch ?? Container(),
                                             ),
                                             child: IconButton(
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       4,
                                       (index) => const ShimmerCard(
                                         borderRadius: 30,
-                                        size: Size(50.0, 30.0),
+                                        size: Size(60.0, 30.0),
                                       ),
                                     ),
                                   )

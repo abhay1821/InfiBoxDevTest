@@ -30,7 +30,8 @@ class AuthScreen extends StatelessWidget {
                   Flexible(
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 20.0),
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
+                      padding: EdgeInsets.symmetric(
+                          vertical: sizeConfig.getPropHeight(10), horizontal: sizeConfig.getPropWidth(60)),
                       transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -108,17 +109,14 @@ class AuthCardState extends State<AuthCard> with SingleTickerProviderStateMixin 
           "password": _passwordController.text,
         },
       );
-      debugPrint("${res.data}--------------");
       debugPrint(res.exception.toString());
       if (res.data != null) {
         Provider.of<LocalDatabase>(context, listen: false).saveAuthCred(
           AuthCredDataModel.fromJson(res.data!),
         );
-        debugPrint("${res.data}--------token");
         navigationService.pushReplacementScreen(Routes.homeScreen);
       }
     } catch (error) {
-      debugPrint("$error----------------err");
       const errorMessage = 'Could not authenticate you. Please try again later';
       _showErrorDialog(errorMessage);
     }
