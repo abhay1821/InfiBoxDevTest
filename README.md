@@ -1,7 +1,7 @@
 # Shop APP
 
 # Description
-    This application uses Firebase Rest-API for SignIN/SignUP purposes which is a customized shop app where An E-commerce app with Provider as State management is used for
+    An E-commerce app with Provider as State management is used for
     maintaining the State of the app throughout the life cycle. It is one of
     the most easily implemented State management which uses a change
     notifier It listens to a ChangeNotifier extended by the model
